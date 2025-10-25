@@ -1,18 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link,useNavigate } from 'react-router'
+
 import { useAuth } from '../hooks/Provider'
 export const Header = ({ children }) => {
-    const { login } = useAuth()
+    const navigate = useNavigate()
+    const { login,setLogin } = useAuth()
     const signOut = () => {
-        // Lógica para cerrar sesión
+        setLogin(false)
+        navigate('/')        
     }
     return (
         <>
             {login === true ? (<header className="header">
                 <nav>
-                    <Link to="/dashboard">Dashboard</Link>
-
-
+                    <Link to="/dashboard" style={{padding: "3rem"}}>Dashboard</Link>
+                    <br/>
+                    <button onClick={signOut} style={{float:'right'}}>Sign Out</button>
                 </nav>
             </header>
             ) : null}

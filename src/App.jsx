@@ -19,7 +19,6 @@ const App = () => {
             </Routes>
           </Header>
         </Provider>
-
       </BrowserRouter>
     </>
   )
