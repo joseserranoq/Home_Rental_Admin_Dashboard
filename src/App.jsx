@@ -4,6 +4,7 @@ import { HouseRental } from './Pages/HouseRental'
 import { Dashboard } from './Pages/Dashboard'
 import { Provider } from './hooks/Provider'
 import { Header } from './components/Header'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 const App = () => {
   return (
@@ -13,11 +14,8 @@ const App = () => {
           <Header>
             <Routes>
               <Route path='/' element={<Login />} />
-
-
-
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/house-rental/:id' element={<HouseRental />} />
+              <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path='/house-rental/:id' element={<ProtectedRoute><HouseRental /></ProtectedRoute>} />
             </Routes>
           </Header>
         </Provider>
